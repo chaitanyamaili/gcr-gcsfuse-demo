@@ -1,8 +1,8 @@
 #Commands Playbook
 #Set Custom variables
-export PROJECT_ID=parallel-dynamic-runtime-tf
-export REGION=us-central1
-export BUCKET=fuse-mount-bucket
+export PROJECT_ID=<project>
+export REGION=<region>
+export BUCKET=<bucket>
 
 #Setting up gcloud defaults
 #Set your default project:
@@ -19,12 +19,12 @@ gcloud projects add-iam-policy-binding $PROJECT_ID --member "serviceAccount:gcsf
 
 #Setting up the Cloud Storage Bucket
 #Create a bucket:
-# gcloud storage buckets create gs://$BUCKET --public-access-prevention
+gcloud storage buckets create gs://$BUCKET --public-access-prevention
 #Copy files from you local dir to Cloud Storage Bucket
-# gcloud storage cp assets/index.html gs://$BUCKET 
+gcloud storage cp assets/index.html gs://$BUCKET 
 #Alternatively you can upload files using the gsutil rsync
 #You can use the -R option to recursively copy directory trees. For example, to synchronize a local directory named local-dir with a bucket, use the following:
-# gsutil rsync -R assets gs://$BUCKET
+gsutil rsync -R assets gs://$BUCKET
 
 #Creating the Cloud Run Service
 #Ensure you are in the root of this directory
